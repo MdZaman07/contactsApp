@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Avatar from "./Avatar";
 
 type ContactCardProps = {
   id: number;
@@ -10,10 +11,13 @@ type ContactCardProps = {
 const ContactCard = ({ id, name, email, phone }: ContactCardProps) => {
   return (
     <div className="border p-4 rounded shadow hover:shadow-lg transition-shadow">
-      <h2 className="text-xl font-bold">{name}</h2>
+      <div className="flex items-center mb-2">
+        <Avatar src="/avatar1.jpg" />
+        <h2 className="text-xl font-bold ml-4">{name}</h2>
+      </div>
       <p>{email}</p>
       <p>{phone}</p>
-      <Link href={`/contacts/${id}`}>
+      <Link href={`/contact/${id}`}>
         <span className="text-blue-500 mt-2 inline-block cursor-pointer">
           View Details
         </span>
