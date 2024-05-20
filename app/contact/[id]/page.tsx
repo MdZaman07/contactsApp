@@ -10,7 +10,6 @@ async function fetchContacts(id: string) {
   );
   // posts?userId=1
   const contacts = await response.json();
-  console.log(contacts);
 
   return contacts;
 }
