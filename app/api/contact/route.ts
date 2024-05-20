@@ -5,15 +5,6 @@ import { getCurrentUser } from "@/actions/getCurrentUser";
 export async function POST(request: Request) {
   const currentUser = await getCurrentUser();
   if (!currentUser) return NextResponse.error();
-  //   uid             String @id @default(auto()) @map("_id") @db.ObjectId
-  //     id              Int   @unique
-  //     name            String
-  //     username        String
-  //     email           String @unique
-  //     address         Address
-  //     phone           String
-  //     website         String
-  //     company         Company
 
   const body = await request.json();
   const { id, name, username, email, address, phone, website, company } = body;

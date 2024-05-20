@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import { RadioButton } from "primereact/radiobutton";
 import { Tooltip as ReactTooltip } from "react-tooltip";
@@ -14,12 +13,6 @@ interface ContactCardsProps {
 }
 
 const ContactCards = ({ contacts, currentUser }: ContactCardsProps) => {
-  const [selectedOption, setSelectedOption] = useState<string>("allContacts");
-  useEffect(() => {
-    if (selectedOption == "favourites") {
-      const favourites = currentUser?.favourites;
-    }
-  }, [selectedOption]);
   return (
     <>
       {/* <h1 className="text-3xl font-bold mb-4 flex justify-center">Contacts</h1>
@@ -69,7 +62,11 @@ const ContactCards = ({ contacts, currentUser }: ContactCardsProps) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {contacts.map((contact: any) => (
-          <ContactCard contact={contact} currentUser={currentUser} />
+          <ContactCard
+            contact={contact}
+            currentUser={currentUser}
+            key={contact.id}
+          />
         ))}
       </div>
     </>
