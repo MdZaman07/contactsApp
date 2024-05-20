@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { RadioButton } from "primereact/radiobutton";
 import { Tooltip as ReactTooltip } from "react-tooltip";
-import ContactCard from "../components/ContactCard";
-import Button from "../components/Button";
+import ContactCard from "./ContactCard";
+import Button from "./Button";
 import { signIn, signOut } from "next-auth/react";
 import { User } from "@prisma/client";
 import { SafeUser } from "@/types";
@@ -24,7 +24,7 @@ const ContactCards = ({ contacts, currentUser }: ContactCardsProps) => {
     <>
       {/* <h1 className="text-3xl font-bold mb-4 flex justify-center">Contacts</h1>
       {currentUser && <Button label={"Sign Out"} onClick={() => signOut()} />} */}
-      <div className="flex justify-between items-center mb-4">
+      {/* <div className="flex justify-between items-center mb-4">
         <div className="flex items-center">
           <div className="relative w-12 h-12 md:w-16 md:h-16 pb-15 md:pb-0 my-10 sm:my-0">
             <Image
@@ -65,33 +65,8 @@ const ContactCards = ({ contacts, currentUser }: ContactCardsProps) => {
             Sign In
           </button>
         )}
-      </div>
-      <div className="flex justify-center flex-wrap gap-3 mb-4">
-        <div className="flex items-center">
-          <RadioButton
-            inputId="allContacts"
-            name="contactOption"
-            value="allContacts"
-            onChange={(e) => setSelectedOption(e.value)}
-            checked={selectedOption === "allContacts"}
-          />
-          <label htmlFor="allContacts" className="ml-2">
-            All Contacts
-          </label>
-        </div>
-        <div className="flex items-center">
-          <RadioButton
-            inputId="favorites"
-            name="contactOption"
-            value="favorites"
-            onChange={(e) => setSelectedOption(e.value)}
-            checked={selectedOption === "favorites"}
-          />
-          <label htmlFor="favorites" className="ml-2">
-            Favorites
-          </label>
-        </div>
-      </div>
+      </div> */}
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {contacts.map((contact: any) => (
           <ContactCard contact={contact} currentUser={currentUser} />

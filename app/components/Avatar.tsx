@@ -26,7 +26,7 @@ const Avatar = ({ src }: AvatarProps) => {
       width={80}
     />
   ) : (
-    <FaUserCircle size={50} />
+    <FaUserCircle size={30} />
   );
 };
 

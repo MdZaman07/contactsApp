@@ -3,7 +3,7 @@ import ContactCard from "../components/ContactCard";
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import Button from "../components/Button";
 import { signOut } from "next-auth/react";
-import ContactCards from "./ContactCards";
+import ContactCards from "../components/ContactCards";
 
 async function fetchContacts() {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");

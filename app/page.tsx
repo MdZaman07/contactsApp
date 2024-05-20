@@ -9,7 +9,7 @@ import FormWrap from "./components/FormWrap";
 import RegisterForm from "./register/RegisterForm";
 import Container from "./components/Container";
 import { signOut } from "next-auth/react";
-import ContactCards from "./contacts/ContactCards";
+import ContactCards from "./components/ContactCards";
 
 async function fetchContacts() {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
