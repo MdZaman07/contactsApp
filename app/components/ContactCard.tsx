@@ -18,38 +18,20 @@ type ContactCardProps = {
 const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
   const router = useRouter();
   const [contactExists, setContactExists] = useState<boolean>(false);
-
-  // useEffect(() => {
-  //   const checkExistence = async () => {
-  //     const contactEx = await getContactById({ contactId: contact.id });
-  //     if (contactEx) {
-  //       setContactExists(true);
-  //     }
-  //   };
-  //   if (currentUser) {
-  //     checkExistence();
-  //   }
-  // }, []);
+  const checkExistence = currentUser?.favourites.includes(contact.id); // hereeee
 
   const handleFavorites = async () => {
-    if (!contactExists) {
-      axios
-        .post("/api/contact", contact)
-        .then((res) => {
-          toast.success("Added to DB");
-        })
-        .catch((err) => {
-          toast.error("Oops! Couldn't be added to DB!");
-          console.log(err);
-        });
-    }
     axios
       .put("/api/user", {
         id: currentUser?.id,
         contactId: contact.id,
       })
       .then((res) => {
-        toast.success("Added to Favourites");
+        if (checkExistence) {
+          toast.success("Removed from Favourites");
+        } else {
+          toast.success("Added to Favourites");
+        }
         router.refresh();
         console.log("successsss");
       })
@@ -72,9 +54,9 @@ const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
         </span>
       </Link>
       {currentUser ? (
-        contactExists ? (
+        checkExistence ? (
           <Button
-            label="Already Added"
+            label="Favourite"
             onClick={() => {
               handleFavorites();
             }}

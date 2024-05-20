@@ -10,13 +10,26 @@ export async function PUT(request: Request) {
   const body = await request.json();
   const { id, contactId } = body;
 
-  const user = await prisma.user.update({
-    where: { id: id },
-    data: {
-      favourites: {
-        push: contactId,
+  if (currentUser.favourites.includes(contactId)) {
+    const updatedFavourites = currentUser.favourites.filter(
+      (favId) => favId !== contactId
+    );
+    const user = await prisma.user.update({
+      where: { id: id },
+      data: {
+        favourites: updatedFavourites,
       },
-    },
-  });
-  return NextResponse.json(user);
+    });
+    return NextResponse.json(user);
+  } else {
+    const user = await prisma.user.update({
+      where: { id: id },
+      data: {
+        favourites: {
+          push: contactId,
+        },
+      },
+    });
+    return NextResponse.json(user);
+  }
 }
