@@ -12,28 +12,10 @@ import { useEffect, useState } from "react";
 import { Divider, Icon, Rating } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
-import Link from "@mui/material/Link";
 import { TransitionProps } from "@mui/material/transitions";
-import TravelExploreIcon from "@mui/icons-material/TravelExplore";
-import HouseIcon from "@mui/icons-material/House";
 import React from "react";
-import Avatar from "@mui/material/Avatar";
-import Accordion from "@mui/material/Accordion";
-import AccordionActions from "@mui/material/AccordionActions";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
-import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import CardContentDetails from "./CardContentDetails";
 import TContactDetails from "./TContactDetails";
 import TContactImage from "./TContactImage";
@@ -92,6 +74,7 @@ const TContactCard = ({ contact, currentUser }: TContactCardProps) => {
     setOpenDropzone(false);
   };
   const handleDropzoneOpen = () => {
+    if (!currentUser) return;
     setOpenDropzone(true);
   };
 
@@ -108,7 +91,7 @@ const TContactCard = ({ contact, currentUser }: TContactCardProps) => {
         }}
       >
         <div className="aspect-square overflow-hidden relative w-full">
-          {contact.image ? (
+          {currentUser && contact.image ? (
             <Image
               fill
               alt={"name"}
@@ -133,8 +116,20 @@ const TContactCard = ({ contact, currentUser }: TContactCardProps) => {
         <Button size="small" color="primary" onClick={handleClickOpen}>
           View
         </Button>
+        {currentUser ? (
+          checkExistence ? (
+            <Button size="small" onClick={() => handleFavorites()}>
+              Favourite
+            </Button>
+          ) : (
+            <Button size="small" onClick={() => handleFavorites()}>
+              Add to Favourites
+            </Button>
+          )
+        ) : (
+          <></>
+        )}
 
-        <Button size="small">Add to Favourites</Button>
         <TContactDetails contact={contact} open={open} onClose={handleClose} />
         <TContactImage
           contact={contact}

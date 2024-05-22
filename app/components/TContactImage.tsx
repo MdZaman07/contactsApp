@@ -116,6 +116,7 @@ const TContactDetails = ({ contact, open, onClose }: TContactDetailsProps) => {
         toast.error("Something went wrong updating contact in db");
       })
       .finally(() => {
+        setFile(null);
         setIsLoading(false);
         onClose();
       });
@@ -140,13 +141,13 @@ const TContactDetails = ({ contact, open, onClose }: TContactDetailsProps) => {
         className="bg-gradient-to-r from-gray-200 to-gray-500 bg-cover bg-center text-black"
         // style={{ border: "2px solid black", borderRadius: "0.1px" }}
       >
-        {`${contact.name}'s Details`}
+        {`${contact.name}'s Profile Picture`}
       </DialogTitle>
       <Divider className="bg-black" />
-      <DialogContent>
+      <DialogContent className="bg-gradient-to-r from-gray-200 to-gray-500 bg-cover bg-center text-black flex flex-col justify-center items-center h-full">
         <>
           {!file && (
-            <div className="col-span-2 text-center">
+            <div className="flex justify-center items-center">
               <SelectImage handleFileChange={handleFileChange} />
             </div>
           )}
@@ -154,28 +155,45 @@ const TContactDetails = ({ contact, open, onClose }: TContactDetailsProps) => {
             <div className="flex flex-row gap-2 text-sm col-span-2 items-center justify-between">
               <p>{file?.name}</p>
 
-              <div className="w-70px">
+              <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 w-70px">
                 <Button
                   onClick={() => {
                     handleUpload();
                   }}
+                  className=" bg-black text-white "
                 >
-                  Upload
+                  {isLoading ? "Uploading..." : "Upload"}
                 </Button>
-
-                <Button
-                  onClick={() => {
-                    setFile(null);
-                    //   removeImageFromState(item);
-                  }}
-                >
-                  Cancel
-                </Button>
+                {!isLoading && (
+                  <Button
+                    onClick={() => {
+                      setFile(null);
+                      //   removeImageFromState(item);
+                    }}
+                    disabled={isLoading}
+                    className="bg-black text-white "
+                  >
+                    Remove
+                  </Button>
+                )}
               </div>
             </div>
           )}
         </>
       </DialogContent>
+      {!isLoading && (
+        <DialogActions className="bg-gradient-to-r from-gray-200 to-gray-500 bg-cover bg-center text-black">
+          <Button
+            onClick={() => {
+              setFile(null);
+              onClose();
+            }}
+            className="bg-black text-white"
+          >
+            Close
+          </Button>
+        </DialogActions>
+      )}
     </Dialog>
   );
 };

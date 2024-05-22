@@ -63,7 +63,7 @@ const RegisterForm = () => {
       <Heading title="Sign up for E-shop" />
       <Button
         outline
-        label="Sign up with Goodle"
+        label="Continue with Google"
         icon={AiOutlineGoogle}
         onClick={() => {
           signIn("google");
