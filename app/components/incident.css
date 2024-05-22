@@ -1,0 +1,16 @@
+.incident-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.incident-details {
+  background-color: white;
+  padding: 1em;
+  border-radius: 10px;
+  max-width: 70%;
+}
+p {
+  word-break: break-all;
+}

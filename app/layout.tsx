@@ -4,6 +4,22 @@ import "./globals.css";
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import { Toaster } from "react-hot-toast";
 import NavBar from "./components/nav/NavBar";
+import { PrimeReactProvider } from "primereact/api";
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primeicons/primeicons.css";
+
+// import "/node_modules/primeflex/primeflex.css";
+// primereact/resources/themes/lara-light-blue/theme.css
+// primereact/resources/themes/lara-light-indigo/theme.css
+// primereact/resources/themes/lara-light-purple/theme.css
+// primereact/resources/themes/lara-light-teal/theme.css
+// primereact/resources/themes/lara-dark-blue/theme.css
+
+//icons
+import "primeicons/primeicons.css";
+// primeflex
+// import "primeflex/primeflex.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,9 +46,12 @@ export default async function RootLayout({
             },
           }}
         />
+
         <div className="flex flex-col min-h-screen  ">
           <NavBar />
-          <main className="flex-grow">{children}</main>
+          <PrimeReactProvider>
+            <main className="flex-grow">{children}</main>
+          </PrimeReactProvider>
         </div>
       </body>
     </html>

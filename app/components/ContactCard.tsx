@@ -9,6 +9,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import getContactById from "@/actions/getContactById";
 import { useEffect, useState } from "react";
+import { Rating } from "@mui/material";
 
 type ContactCardProps = {
   contact: Contact;

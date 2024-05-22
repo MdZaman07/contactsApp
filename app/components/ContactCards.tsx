@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import { RadioButton } from "primereact/radiobutton";
 import { Tooltip as ReactTooltip } from "react-tooltip";
@@ -5,64 +6,43 @@ import ContactCard from "./ContactCard";
 import Button from "./Button";
 import { signIn, signOut } from "next-auth/react";
 import { User } from "@prisma/client";
-import { SafeUser } from "@/types";
+import { Contact, SafeUser } from "@/types";
 import Image from "next/image";
+import TContactCard from "./TContactCard";
 interface ContactCardsProps {
   currentUser: SafeUser | null;
   contacts: any;
 }
 
 const ContactCards = ({ contacts, currentUser }: ContactCardsProps) => {
+  const [filteredContacts, setFilteredContacts] = useState(contacts);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    const results = contacts.filter((contacts: Contact) => {
+      return (
+        contacts.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        contacts.email.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    });
+    setFilteredContacts(results);
+    console.log(searchQuery);
+    console.log(filteredContacts);
+  }, [searchQuery, contacts]);
   return (
     <>
-      {/* <h1 className="text-3xl font-bold mb-4 flex justify-center">Contacts</h1>
-      {currentUser && <Button label={"Sign Out"} onClick={() => signOut()} />} */}
-      {/* <div className="flex justify-between items-center mb-4">
-        <div className="flex items-center">
-          <div className="relative w-12 h-12 md:w-16 md:h-16 pb-15 md:pb-0 my-10 sm:my-0">
-            <Image
-              src="/avatar.png"
-              alt="logo"
-              layout="fill"
-              objectFit="contain"
-              className="rounded-full bg-red-200"
-            />
-          </div>
-          <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-red-500 text-[25px] md:text-2xl font-semibold ml-2 md:ml-4">
-            Pulok
-          </h1>
-        </div>
-        <h1 className="text-3xl font-bold">Contacts</h1>
-        {currentUser ? (
-          <button
-            onClick={() => signOut()}
-            title="Sign Out"
-            data-tooltip-id="my-tooltip-1"
-
-            // className="bg-sky-500 text-black rounded-full p-2 hover:bg-red-600 transition-colors"
-          >
-            <Image
-              src="/left.png"
-              alt="Sign Out"
-              width={40}
-              height={40}
-              className="rounded-full hover:bg-gray-600"
-            />
-            <ReactTooltip id="my-tooltip-1" place="left" content="Signout" />
-          </button>
-        ) : (
-          <button
-            onClick={() => signIn()}
-            className="bg-sky-500 text-black rounded-full p-2 hover:bg-red-600 transition-colors"
-          >
-            Sign In
-          </button>
-        )}
-      </div> */}
-
+      <input
+        type="text"
+        placeholder="Search by name or email"
+        value={searchQuery}
+        onChange={(e) => {
+          setSearchQuery(e.target.value);
+        }}
+        className="p-2 mb-4 border rounded w-full"
+      />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {contacts.map((contact: any) => (
-          <ContactCard
+        {filteredContacts.map((contact: any) => (
+          <TContactCard
             contact={contact}
             currentUser={currentUser}
             key={contact.id}
