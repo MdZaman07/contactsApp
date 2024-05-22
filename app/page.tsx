@@ -1,16 +1,5 @@
-import Image from "next/image";
-import ContactCard from "./components/ContactCard";
-import { useRouter } from "next/navigation";
-import Contacts from "./contacts/page";
 import { getCurrentUser } from "@/actions/getCurrentUser";
-import getContactById from "@/actions/getContactById";
-
-import FormWrap from "./components/FormWrap";
-import RegisterForm from "./register/RegisterForm";
-import Container from "./components/Container";
-import { signOut } from "next-auth/react";
 import ContactCards from "./components/ContactCards";
-import axios from "axios";
 import prisma from "@/libs/prismadb";
 
 async function fetchContacts() {

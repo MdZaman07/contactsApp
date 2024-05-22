@@ -1,8 +1,5 @@
 import React from "react";
-import ContactCard from "../components/ContactCard";
 import { getCurrentUser } from "@/actions/getCurrentUser";
-import Button from "../components/Button";
-import { signOut } from "next-auth/react";
 import ContactCards from "../components/ContactCards";
 
 async function fetchContacts() {

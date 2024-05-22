@@ -1,38 +1,23 @@
 "use client";
-// import Link from "next/link";
-// import Avatar from "./Avatar";
+
 import { Contact, SafeUser } from "@/types";
-// import Button from "./Button";
-import { useRouter } from "next/navigation";
-import { getCurrentUser } from "@/actions/getCurrentUser";
 import axios from "axios";
 import toast from "react-hot-toast";
-import getContactById from "@/actions/getContactById";
 import { useEffect, useState } from "react";
-import { Divider, Icon, Rating } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Button, CardActionArea, CardActions } from "@mui/material";
-import Slide from "@mui/material/Slide";
-import { TransitionProps } from "@mui/material/transitions";
 import React from "react";
 import CardContentDetails from "./CardContentDetails";
 import TContactDetails from "./TContactDetails";
 import TContactImage from "./TContactImage";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type TContactCardProps = {
   contact: Contact;
   currentUser: SafeUser | null;
 };
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement<any, any>;
-  },
-  ref: React.Ref<unknown>
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 
 const TContactCard = ({ contact, currentUser }: TContactCardProps) => {
   const router = useRouter();

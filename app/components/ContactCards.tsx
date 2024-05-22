@@ -1,13 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { RadioButton } from "primereact/radiobutton";
-import { Tooltip as ReactTooltip } from "react-tooltip";
-import ContactCard from "./ContactCard";
-import Button from "./Button";
-import { signIn, signOut } from "next-auth/react";
-import { User } from "@prisma/client";
 import { Contact, SafeUser } from "@/types";
-import Image from "next/image";
 import TContactCard from "./TContactCard";
 interface ContactCardsProps {
   currentUser: SafeUser | null;
@@ -19,15 +12,17 @@ const ContactCards = ({ contacts, currentUser }: ContactCardsProps) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    const results = contacts.filter((contacts: Contact) => {
-      return (
-        contacts.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        contacts.email.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    });
-    setFilteredContacts(results);
-    console.log(searchQuery);
-    console.log(filteredContacts);
+    const delayTimer = setTimeout(() => {
+      const results = contacts.filter((contact: Contact) => {
+        return (
+          contact.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          contact.email.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      });
+      setFilteredContacts(results);
+    }, 300);
+
+    return () => clearTimeout(delayTimer);
   }, [searchQuery, contacts]);
   return (
     <>
