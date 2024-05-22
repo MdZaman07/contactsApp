@@ -96,7 +96,7 @@ const TContactCard = ({ contact, currentUser }: TContactCardProps) => {
               fill
               alt={"name"}
               src={contact.image}
-              className="w-full h-full object-contain"
+              className="w-full h-full "
             />
           ) : (
             <Image

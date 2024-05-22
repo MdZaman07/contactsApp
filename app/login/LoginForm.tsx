@@ -11,8 +11,9 @@ import { AiOutlineGoogle } from "react-icons/ai";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { SafeUser } from "@/types";
 
-const LoginForm = () => {
+const LoginForm = ({ currentUser }: { currentUser: SafeUser | null }) => {
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -25,6 +26,30 @@ const LoginForm = () => {
     },
   });
   const router = useRouter();
+  useEffect(() => {
+    if (currentUser) {
+      router.push("/"); //or home page
+      router.refresh();
+    }
+  }, []);
+
+  const handleGoogleSignIn = async () => {
+    try {
+      setIsLoading(true);
+      const googleResponse = await signIn("google").then(() => {
+        router.push("/");
+      });
+      //   if (googleResponse?.ok) {
+      //     router.push("/");
+      //     router.refresh();
+      //     toast.success("Logged In");
+      //   }
+      //   setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      toast.error("Failed to sign in");
+    }
+  };
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
@@ -45,10 +70,13 @@ const LoginForm = () => {
       }
     });
   };
+  if (currentUser) {
+    return <p className="text-center">Logged in. Redirecting...</p>;
+  }
 
   return (
     <>
-      <Heading title="Sign in to E-shop" />
+      <Heading title="Sign in to Contacts" />
       <Button
         outline
         label="Continue with Google"

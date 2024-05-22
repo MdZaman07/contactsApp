@@ -12,8 +12,9 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { SafeUser } from "@/types";
 
-const RegisterForm = () => {
+const RegisterForm = ({ currentUser }: { currentUser: SafeUser | null }) => {
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -27,6 +28,12 @@ const RegisterForm = () => {
     },
   });
   const router = useRouter();
+  useEffect(() => {
+    if (currentUser) {
+      router.push("/"); //or home page
+      router.refresh();
+    }
+  }, []);
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
@@ -57,10 +64,13 @@ const RegisterForm = () => {
         setIsLoading(false);
       });
   };
+  if (currentUser) {
+    return <p className="text-center">Logged in. Redirecting...</p>;
+  }
 
   return (
     <>
-      <Heading title="Sign up for E-shop" />
+      <Heading title="Sign up for Contacts" />
       <Button
         outline
         label="Continue with Google"
