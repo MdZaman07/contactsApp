@@ -1,27 +1,22 @@
-import { Contact, SafeUser } from "@/types";
+import { Contact } from "@/types";
 import {
   DialogTitle,
   DialogContent,
   DialogContentText,
   Typography,
-  AccordionSummary,
-  AccordionDetails,
   DialogActions,
   Dialog,
   Slide,
   Divider,
   Link,
-  Accordion,
   Button,
 } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
-import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
 import HouseIcon from "@mui/icons-material/House";
 
 import React, { useState } from "react";
+import CompanyDetails from "./CompanyDetails";
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement<any, any>;
@@ -37,11 +32,6 @@ interface TContactDetailsProps {
 }
 
 const TContactDetails = ({ contact, open, onClose }: TContactDetailsProps) => {
-  //   const [open, setOpen] = useState(false);
-
-  //   const handleClose = () => {
-  //     setOpen(false);
-  //   };
   return (
     <Dialog
       open={open}
@@ -58,10 +48,7 @@ const TContactDetails = ({ contact, open, onClose }: TContactDetailsProps) => {
         },
       }}
     >
-      <DialogTitle
-        className="bg-gradient-to-r from-gray-200 to-gray-500 bg-cover bg-center text-black"
-        // style={{ border: "2px solid black", borderRadius: "0.1px" }}
-      >
+      <DialogTitle className="bg-gradient-to-r from-gray-200 to-gray-500 bg-cover bg-center text-black">
         {`${contact.name}'s Details`}
       </DialogTitle>
       <Divider className="bg-black" />
@@ -95,45 +82,7 @@ const TContactDetails = ({ contact, open, onClose }: TContactDetailsProps) => {
               </Typography>
             </div>
             <Divider className="bg-black" />
-            <div className="mt-5 ">
-              <Accordion>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1-content"
-                  id="panel1-header"
-                  className="bg-gradient-to-r from-gray-200 to-gray-500 bg-cover bg-center text-black"
-                >
-                  {contact.company.name}
-                </AccordionSummary>
-
-                <AccordionDetails className="bg-gradient-to-r from-gray-200 to-gray-500 bg-cover bg-center text-black">
-                  <Divider className="bg-black " variant="fullWidth" />
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginTop: "8px",
-                    }}
-                  >
-                    <RecordVoiceOverIcon />
-                    <p style={{ marginLeft: "8px" }}>
-                      {contact.company.catchPhrase}
-                    </p>
-                  </div>
-                  <Divider className="bg-black mt-3" variant="fullWidth" />
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginTop: "10px",
-                    }}
-                  >
-                    <BusinessCenterIcon />
-                    <p style={{ marginLeft: "8px" }}>{contact.company.bs}</p>
-                  </div>
-                </AccordionDetails>
-              </Accordion>
-            </div>
+            <CompanyDetails contact={contact} />
           </DialogContentText>
         </DialogContent>
       </div>

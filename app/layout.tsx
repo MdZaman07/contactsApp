@@ -9,17 +9,7 @@ import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primeicons/primeicons.css";
 
-// import "/node_modules/primeflex/primeflex.css";
-// primereact/resources/themes/lara-light-blue/theme.css
-// primereact/resources/themes/lara-light-indigo/theme.css
-// primereact/resources/themes/lara-light-purple/theme.css
-// primereact/resources/themes/lara-light-teal/theme.css
-// primereact/resources/themes/lara-dark-blue/theme.css
-
-//icons
 import "primeicons/primeicons.css";
-// primeflex
-// import "primeflex/primeflex.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 

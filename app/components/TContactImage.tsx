@@ -1,17 +1,11 @@
-import { Contact, SafeUser } from "@/types";
+import { Contact } from "@/types";
 import {
   DialogTitle,
   DialogContent,
-  DialogContentText,
-  Typography,
-  AccordionSummary,
-  AccordionDetails,
   DialogActions,
   Dialog,
   Slide,
   Divider,
-  Link,
-  Accordion,
   Button,
 } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
