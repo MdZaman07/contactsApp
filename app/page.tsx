@@ -1,3 +1,4 @@
+export const revalidate = 0;
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import ContactCards from "./components/ContactCards";
 import prisma from "@/libs/prismadb";
