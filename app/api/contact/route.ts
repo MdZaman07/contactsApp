@@ -24,32 +24,21 @@ export async function POST(request: Request) {
   return NextResponse.json(contact);
 }
 
-// export async function PUT(request: Request) {
-//   const currentUser = await getCurrentUser();
+export async function PUT(request: Request) {
+  const currentUser = await getCurrentUser();
 
-//   if (!currentUser || currentUser.role !== "ADMIN") {
-//     return NextResponse.error();
-//   }
+  if (!currentUser) {
+    return NextResponse.error();
+  }
 
-//   const body = await request.json();
-//   const { id, inStock, offerId } = body;
-//   console.log(body);
-//   let updatedProduct;
-//   if (offerId) {
-//     // Update the product's offer field if an offer is provided
-//     updatedProduct = await prisma.product.update({
-//       where: { id: id },
-//       data: {
-//         offer: { connect: { id: offerId } }, // Connect the Offer to the Product
-//       },
-//     });
-//     console.log(updatedProduct);
-//   } else {
-//     updatedProduct = await prisma.product.update({
-//       where: { id: id },
-//       data: { inStock },
-//     });
-//   }
-//   console.log(updatedProduct);
-//   return NextResponse.json(updatedProduct);
-// }
+  const body = await request.json();
+  const { id, image } = body;
+  // console.log(body);
+  const updatedContact = await prisma.contact.update({
+    where: { id: id },
+    data: {
+      image: image,
+    },
+  });
+  return NextResponse.json(updatedContact);
+}

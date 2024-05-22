@@ -18,7 +18,8 @@
 
 body {
   /* background-color: gray; */
-  background: linear-gradient(to right, #ddd0cd, #c5594d);
+  /* background: linear-gradient(to right, #ddd0cd, #c5594d); */
+  background: linear-gradient(135deg, #1b8af1, #b58ded);
   /* Change these colors to your preference */
   transition: background 0.5s ease;
 

@@ -36,7 +36,7 @@ export default async function Home() {
 
   return (
     <main className="p-8">
-      <ContactCards contacts={contacts} currentUser={currentUser} />
+      <ContactCards contacts={existingContacts} currentUser={currentUser} />
     </main>
   );
 }

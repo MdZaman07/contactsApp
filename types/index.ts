@@ -36,4 +36,5 @@ export type Contact = {
   phone: string;
   website: string;
   company: Company;
+  image?: string;
 };
