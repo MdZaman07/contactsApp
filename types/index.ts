@@ -27,7 +27,7 @@ interface Company {
   bs: string;
 }
 
-export type Contact = {
+export interface Contact {
   id: number;
   name: string;
   username: string;
@@ -37,4 +37,4 @@ export type Contact = {
   website: string;
   company: Company;
   image?: string;
-};
+}

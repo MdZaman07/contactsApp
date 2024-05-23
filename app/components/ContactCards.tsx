@@ -23,19 +23,20 @@ const ContactCards = ({ contacts, currentUser }: ContactCardsProps) => {
   const handleCriteriaChange = (event: SelectChangeEvent) => {
     setSearchCriteria(event.target.value as string);
   };
-  const processPhoneNo = (phone: string) =>
-    phone.replace(/[\s-]/g, "").toLowerCase();
+  const processPhoneNo = (phone: string) => phone.replace(/[\s-]/g, ""); //remove spaces and dashes
   useEffect(() => {
     const delayTimer = setTimeout(() => {
       const results = contacts.filter((contact: Contact) => {
         if (searchCriteria === "phone") {
-          return processPhoneNo(contact.phone).includes(searchQuery);
+          return processPhoneNo(contact.phone).startsWith(searchQuery);
         } else if (searchCriteria === "email") {
           return contact.email
             .toLowerCase()
-            .includes(searchQuery.toLowerCase());
+            .startsWith(searchQuery.toLowerCase());
         } else {
-          return contact.name.toLowerCase().includes(searchQuery.toLowerCase());
+          return contact.name
+            .toLowerCase()
+            .startsWith(searchQuery.toLowerCase());
         }
       });
       setFilteredContacts(results);

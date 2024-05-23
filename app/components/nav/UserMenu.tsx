@@ -7,6 +7,7 @@ import MenuItem from "./MenuItem";
 import { signOut } from "next-auth/react";
 import BackDrop from "./BackDrop";
 import { SafeUser } from "@/types";
+import { FaUserCircle } from "react-icons/fa";
 
 interface UserMenuProps {
   currentUser: SafeUser | null;
@@ -37,7 +38,7 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
         transition
         text-slate-700"
         >
-          <Avatar />
+          <FaUserCircle color="black" size={30} />
           <AiFillCaretDown color="black" />
         </div>
         {isOpen && (

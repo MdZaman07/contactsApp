@@ -21,8 +21,7 @@ type ContactCardProps = {
 
 const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
   const router = useRouter();
-  const [contactExists, setContactExists] = useState<boolean>(false);
-  const checkExistence = currentUser?.favourites.includes(contact.id);
+  const checkExistence = currentUser?.favourites.includes(contact.id); //to check if currentUser has the contact in the favourites list
   const [open, setOpen] = useState(false);
   const [openDropzone, setOpenDropzone] = useState(false);
 
