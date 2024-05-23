@@ -54,7 +54,7 @@ const ContactDetails = ({ contact, open, onClose }: ContactDetailsProps) => {
       <Divider className="bg-black" />
       <div className="bg-gradient-to-r from-gray-200 to-gray-500 bg-cover bg-center text-black">
         <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
+          <div>
             <div
               style={{
                 display: "flex",
@@ -83,7 +83,7 @@ const ContactDetails = ({ contact, open, onClose }: ContactDetailsProps) => {
             </div>
             <Divider className="bg-black" />
             <CompanyDetails contact={contact} />
-          </DialogContentText>
+          </div>
         </DialogContent>
       </div>
       <DialogActions className="bg-gradient-to-r from-gray-200 to-gray-500 bg-cover bg-center text-black">

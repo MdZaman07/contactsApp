@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Contact, SafeUser } from "@/types";
-import TContactCard from "./ContactCard";
+import ContactCard from "./ContactCard";
 import { AiOutlineSearch } from "react-icons/ai";
 import {
   Box,
@@ -86,7 +86,7 @@ const ContactCards = ({ contacts, currentUser }: ContactCardsProps) => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
           {filteredContacts.map((contact: any) => (
-            <TContactCard
+            <ContactCard
               contact={contact}
               currentUser={currentUser}
               key={contact.id}

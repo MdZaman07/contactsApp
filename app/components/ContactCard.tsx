@@ -9,8 +9,8 @@ import CardContent from "@mui/material/CardContent";
 import { Button, CardActionArea, CardActions, Divider } from "@mui/material";
 import React from "react";
 import CardContentDetails from "./CardContentDetails";
-import TContactDetails from "./ContactDetails";
-import TContactImage from "./ContactImage";
+import ContactDetails from "./ContactDetails";
+import ContactImage from "./ContactImage";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -101,7 +101,7 @@ const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
         {currentUser ? (
           checkExistence ? (
             <Button size="small" onClick={() => handleFavorites()}>
-              Favourite
+              Unfavourite
             </Button>
           ) : (
             <Button size="small" onClick={() => handleFavorites()}>
@@ -111,8 +111,8 @@ const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
         ) : (
           <></>
         )}
-        <TContactDetails contact={contact} open={open} onClose={handleClose} />
-        <TContactImage
+        <ContactDetails contact={contact} open={open} onClose={handleClose} />
+        <ContactImage
           contact={contact}
           open={openDropzone}
           onClose={handleDropzoneClose}

@@ -5,6 +5,7 @@ interface BackDropProps {
 const BackDrop = ({ onClick }: BackDropProps) => {
   return (
     <div
+      onClick={onClick}
       className="
       z-20
       bg-slate-200

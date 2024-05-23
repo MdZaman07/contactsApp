@@ -1,11 +1,8 @@
 import UserMenu from "./UserMenu";
-import { getCurrentUser } from "@/actions/getCurrentUser";
 import { SafeUser } from "@/types";
 import Image from "next/image";
 
 const NavBar = ({ currentUser }: { currentUser: SafeUser | null }) => {
-  // const currentUser = await getCurrentUser();
-
   return (
     <div className="flex flex-col md:flex-row justify-between items-center mb-4">
       <div className="relative flex items-center">
