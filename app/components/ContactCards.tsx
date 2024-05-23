@@ -19,12 +19,13 @@ interface ContactCardsProps {
 const ContactCards = ({ contacts, currentUser }: ContactCardsProps) => {
   const [filteredContacts, setFilteredContacts] = useState(contacts);
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchCriteria, setSearchCriteria] = useState("name");
+  const [searchCriteria, setSearchCriteria] = useState("name"); //default search criteria
   const handleCriteriaChange = (event: SelectChangeEvent) => {
     setSearchCriteria(event.target.value as string);
   };
   const processPhoneNo = (phone: string) => phone.replace(/[\s-]/g, ""); //remove spaces and dashes
   useEffect(() => {
+    //search by criteria
     const delayTimer = setTimeout(() => {
       const results = contacts.filter((contact: Contact) => {
         if (searchCriteria === "phone") {
@@ -40,9 +41,9 @@ const ContactCards = ({ contacts, currentUser }: ContactCardsProps) => {
         }
       });
       setFilteredContacts(results);
-    }, 300);
+    }, 300); //delay for debouncing the search
 
-    return () => clearTimeout(delayTimer);
+    return () => clearTimeout(delayTimer); //cleanup timer on unmount
   }, [searchQuery, searchCriteria, contacts]);
   return (
     <>

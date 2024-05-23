@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import { Toaster } from "react-hot-toast";
 import NavBar from "./components/nav/NavBar";
-import { PrimeReactProvider } from "primereact/api";
 
-const inter = Inter({ subsets: ["latin"] });
+//use poppins font
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {

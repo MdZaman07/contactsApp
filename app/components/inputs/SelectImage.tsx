@@ -3,13 +3,13 @@
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 interface SelectImageProps {
-  //   item?: ImageType;
   handleFileChange: (value: File) => void;
 }
 
 const SelectImage = ({ handleFileChange }: SelectImageProps) => {
   const onDrop = useCallback((acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
+      //only drop first file
       handleFileChange(acceptedFiles[0]);
     }
   }, []);

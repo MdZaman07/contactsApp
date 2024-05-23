@@ -21,7 +21,8 @@ type ContactCardProps = {
 
 const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
   const router = useRouter();
-  const checkExistence = currentUser?.favourites.includes(contact.id); //to check if currentUser has the contact in the favourites list
+  // check if currentUser has the contact in the favourites list
+  const checkExistence = currentUser?.favourites.includes(contact.id);
   const [open, setOpen] = useState(false);
   const [openDropzone, setOpenDropzone] = useState(false);
 
@@ -33,12 +34,12 @@ const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
       })
       .then((res) => {
         if (checkExistence) {
+          //conditionally render toast messages
           toast.success("Removed from Favourites");
         } else {
           toast.success("Added to Favourites");
         }
         router.refresh();
-        console.log("successsss");
       })
       .catch((err) => {
         toast.error("Oops! Couldn't be added!");
@@ -72,7 +73,7 @@ const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
         }}
       >
         <div className="aspect-square overflow-hidden relative w-full">
-          {currentUser && contact.image ? (
+          {currentUser && contact.image ? ( //conditionally render contact's image
             <Image
               fill
               alt={contact.name}
@@ -98,7 +99,7 @@ const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
           View
         </Button>
         {currentUser ? (
-          checkExistence ? (
+          checkExistence ? ( //conditionally render buttons based on existence in the favourites list
             <Button size="small" onClick={() => handleFavorites()}>
               Unfavourite
             </Button>

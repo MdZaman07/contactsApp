@@ -28,6 +28,7 @@ const RegisterForm = ({ currentUser }: { currentUser: SafeUser | null }) => {
   });
   const router = useRouter();
   useEffect(() => {
+    //if user is already logged in, redirect to home page
     if (currentUser) {
       router.push("/");
       router.refresh();
@@ -36,7 +37,6 @@ const RegisterForm = ({ currentUser }: { currentUser: SafeUser | null }) => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    console.log(data);
 
     axios
       .post("/api/register", data)
@@ -105,7 +105,7 @@ const RegisterForm = ({ currentUser }: { currentUser: SafeUser | null }) => {
         type="password"
       />
       <Button
-        label={isLoading ? "Loading" : "Sign Up"}
+        label={isLoading ? "Loading" : "Sign Up"} //conditionally render button label
         onClick={handleSubmit(onSubmit)}
       />
       <p className="text-sm">

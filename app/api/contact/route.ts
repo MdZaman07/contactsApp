@@ -24,6 +24,7 @@ export async function POST(request: Request) {
   return NextResponse.json(contact);
 }
 
+//update contact's image
 export async function PUT(request: Request) {
   const currentUser = await getCurrentUser();
 
@@ -33,7 +34,7 @@ export async function PUT(request: Request) {
 
   const body = await request.json();
   const { id, image } = body;
-  // console.log(body);
+
   const updatedContact = await prisma.contact.update({
     where: { id: id },
     data: {

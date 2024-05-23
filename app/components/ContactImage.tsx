@@ -56,6 +56,7 @@ const ContactDetails = ({ contact, open, onClose }: ContactDetailsProps) => {
           uploadTask.on(
             "state_changed",
             (snapshot) => {
+              // For development purposes
               // Observe state change events such as progress, pause, and resume
               // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
               const progress =
@@ -175,7 +176,7 @@ const ContactDetails = ({ contact, open, onClose }: ContactDetailsProps) => {
           )}
         </>
       </DialogContent>
-      {!isLoading && (
+      {!isLoading && ( // render buttons when page is not loading
         <DialogActions className="bg-gradient-to-r from-gray-200 to-gray-500 bg-cover bg-center text-black">
           <Button
             onClick={() => {

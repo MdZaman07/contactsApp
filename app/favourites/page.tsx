@@ -6,6 +6,7 @@ import prisma from "@/libs/prismadb";
 const Favourites = async () => {
   const currentUser = await getCurrentUser();
   const favourites = currentUser?.favourites;
+  // Retrieve favourite contacts from database using the list of favourites
   const favouriteContacts = await prisma.contact.findMany({
     where: {
       id: { in: favourites },

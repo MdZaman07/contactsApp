@@ -9,7 +9,7 @@ export async function PUT(request: Request) {
 
   const body = await request.json();
   const { id, contactId } = body;
-
+  //remove contact from favourites list
   if (currentUser.favourites.includes(contactId)) {
     const updatedFavourites = currentUser.favourites.filter(
       (favId) => favId !== contactId
@@ -22,6 +22,7 @@ export async function PUT(request: Request) {
     });
     return NextResponse.json(user);
   } else {
+    //add contact to favourites list
     const user = await prisma.user.update({
       where: { id: id },
       data: {
