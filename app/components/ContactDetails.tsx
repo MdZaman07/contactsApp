@@ -25,13 +25,13 @@ const Transition = React.forwardRef(function Transition(
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-interface TContactDetailsProps {
+interface ContactDetailsProps {
   contact: Contact;
   open: boolean;
   onClose: () => void;
 }
 
-const TContactDetails = ({ contact, open, onClose }: TContactDetailsProps) => {
+const ContactDetails = ({ contact, open, onClose }: ContactDetailsProps) => {
   return (
     <Dialog
       open={open}
@@ -95,4 +95,4 @@ const TContactDetails = ({ contact, open, onClose }: TContactDetailsProps) => {
   );
 };
 
-export default TContactDetails;
+export default ContactDetails;

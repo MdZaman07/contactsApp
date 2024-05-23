@@ -30,13 +30,13 @@ const Transition = React.forwardRef(function Transition(
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-interface TContactDetailsProps {
+interface ContactDetailsProps {
   contact: Contact;
   open: boolean;
   onClose: () => void;
 }
 
-const TContactDetails = ({ contact, open, onClose }: TContactDetailsProps) => {
+const ContactDetails = ({ contact, open, onClose }: ContactDetailsProps) => {
   const [file, setFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -192,4 +192,4 @@ const TContactDetails = ({ contact, open, onClose }: TContactDetailsProps) => {
   );
 };
 
-export default TContactDetails;
+export default ContactDetails;

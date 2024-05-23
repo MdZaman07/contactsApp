@@ -52,11 +52,11 @@ const NavBar = async () => {
       <div className="relative flex items-center">
         <div className="relative w-12 h-12 md:w-16 md:h-16 pb-15 md:pb-0  md:ml-5 mt-5 md:mt-5">
           <Image
-            src="/avatar.png"
+            src="/profPic.jpg"
             alt="logo"
             layout="fill"
             objectFit="contain"
-            className="rounded-full bg-red-200"
+            className="rounded-full bg-black "
           />
         </div>
         <h1 className="ml-2 flex items-center justify-center h-full font-bold mt-5">

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Contact, SafeUser } from "@/types";
-import TContactCard from "./TContactCard";
+import TContactCard from "./ContactCard";
 import { AiOutlineSearch } from "react-icons/ai";
 import {
   Box,

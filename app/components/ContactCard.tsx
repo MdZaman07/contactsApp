@@ -9,17 +9,17 @@ import CardContent from "@mui/material/CardContent";
 import { Button, CardActionArea, CardActions, Divider } from "@mui/material";
 import React from "react";
 import CardContentDetails from "./CardContentDetails";
-import TContactDetails from "./TContactDetails";
-import TContactImage from "./TContactImage";
+import TContactDetails from "./ContactDetails";
+import TContactImage from "./ContactImage";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-type TContactCardProps = {
+type ContactCardProps = {
   contact: Contact;
   currentUser: SafeUser | null;
 };
 
-const TContactCard = ({ contact, currentUser }: TContactCardProps) => {
+const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
   const router = useRouter();
   const [contactExists, setContactExists] = useState<boolean>(false);
   const checkExistence = currentUser?.favourites.includes(contact.id);
@@ -133,4 +133,4 @@ const TContactCard = ({ contact, currentUser }: TContactCardProps) => {
   );
 };
 
-export default TContactCard;
+export default ContactCard;
