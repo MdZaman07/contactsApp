@@ -11,16 +11,6 @@ interface InputProps {
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors;
 }
-const handleOnChange = (e: any, type: string | undefined) => {
-  if (type === "number") {
-    const processedInput = e.target.value.replace(/[^0-9]/g, "");
-    const numericInput = parseInt(processedInput);
-    e.target.value = processedInput;
-    // if(numericInput < 0 || numericInput > 60000){
-
-    // }
-  }
-};
 
 const Input = ({
   id,
@@ -39,7 +29,6 @@ const Input = ({
         disabled={disabled}
         {...register(id, { required })}
         placeholder={""}
-        onChange={(e) => handleOnChange(e, type)}
         type={type}
         className={`
         peer

@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Heading from "../components/Heading";
 import Input from "../components/inputs/Input";
-import { register } from "module";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Button from "../components/Button";
 import Link from "next/link";
@@ -30,7 +29,7 @@ const RegisterForm = ({ currentUser }: { currentUser: SafeUser | null }) => {
   const router = useRouter();
   useEffect(() => {
     if (currentUser) {
-      router.push("/"); //or home page
+      router.push("/");
       router.refresh();
     }
   }, []);

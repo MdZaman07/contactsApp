@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Heading from "../components/Heading";
 import Input from "../components/inputs/Input";
-import { register } from "module";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Button from "../components/Button";
 import Link from "next/link";
@@ -29,28 +28,10 @@ const LoginForm = ({ currentUser }: { currentUser: SafeUser | null }) => {
   const router = useRouter();
   useEffect(() => {
     if (currentUser) {
-      router.push("/"); //or home page
+      router.push("/");
       router.refresh();
     }
   }, []);
-
-  const handleGoogleSignIn = async () => {
-    try {
-      setIsLoading(true);
-      const googleResponse = await signIn("google").then(() => {
-        router.push("/");
-      });
-      //   if (googleResponse?.ok) {
-      //     router.push("/");
-      //     router.refresh();
-      //     toast.success("Logged In");
-      //   }
-      //   setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      toast.error("Failed to sign in");
-    }
-  };
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);

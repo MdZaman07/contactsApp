@@ -25,8 +25,6 @@ const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
   const checkExistence = currentUser?.favourites.includes(contact.id);
   const [open, setOpen] = useState(false);
   const [openDropzone, setOpenDropzone] = useState(false);
-  console.log(contact.name + " is" + contact.image);
-  console.log("current user is = " + currentUser?.name);
 
   const handleFavorites = async () => {
     axios
@@ -65,8 +63,6 @@ const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
   };
 
   return (
-    // sx={{ maxWidth: 345 }}
-    // className="max-w-m flex flex-col justify-between"
     <Card
       sx={{ width: 345 }}
       className="max-w-xs flex flex-col justify-between"
@@ -85,12 +81,6 @@ const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
               className="w-full h-full "
             />
           ) : (
-            // <Image
-            //   fill
-            //   alt={contact.name}
-            //   src={"/avatar1.jpg"}
-            //   className="w-full h-full object-contain"
-            // />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-3/4 h-3/4 bg-green-900 text-white font-bold text-4xl rounded-full flex items-center justify-center">
                 {contact.name.charAt(0).toUpperCase()}
@@ -121,7 +111,6 @@ const ContactCard = ({ contact, currentUser }: ContactCardProps) => {
         ) : (
           <></>
         )}
-
         <TContactDetails contact={contact} open={open} onClose={handleClose} />
         <TContactImage
           contact={contact}

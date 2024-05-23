@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import { Toaster } from "react-hot-toast";
 import NavBar from "./components/nav/NavBar";
 import { PrimeReactProvider } from "primereact/api";
-import "primereact/resources/primereact.min.css";
-import "primereact/resources/themes/lara-light-indigo/theme.css";
-import "primeicons/primeicons.css";
-
-import "primeicons/primeicons.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   title: "Contacts App",
@@ -27,7 +24,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <Toaster
           toastOptions={{
             style: {
@@ -36,12 +33,9 @@ export default async function RootLayout({
             },
           }}
         />
-
         <div className="flex flex-col min-h-screen  ">
-          <NavBar />
-          <PrimeReactProvider>
-            <main className="flex-grow">{children}</main>
-          </PrimeReactProvider>
+          <NavBar currentUser={currentUser} />
+          <main className="flex-grow">{children}</main>
         </div>
       </body>
     </html>

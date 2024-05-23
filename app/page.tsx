@@ -5,28 +5,29 @@ import prisma from "@/libs/prismadb";
 
 async function fetchContacts() {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
-
   const contacts = await response.json();
-
   return contacts;
 }
 
 export default async function Home() {
-  const contacts = await fetchContacts();
+  const fetchedContacts = await fetchContacts();
   const existingContacts = await prisma.contact.findMany();
-  const isContactTableEmpty = existingContacts.length === 0;
-  if (isContactTableEmpty) {
-    const insertedContacts = await prisma.contact.createMany({
-      data: contacts,
+
+  if (existingContacts.length === 0) {
+    await prisma.contact.createMany({
+      data: fetchedContacts,
     });
   }
   const currentUser = await getCurrentUser();
 
-  console.log(currentUser);
-
   return (
     <main className="p-8">
-      <ContactCards contacts={existingContacts} currentUser={currentUser} />
+      <ContactCards
+        contacts={
+          existingContacts.length === 0 ? fetchedContacts : existingContacts
+        }
+        currentUser={currentUser}
+      />
     </main>
   );
 }
