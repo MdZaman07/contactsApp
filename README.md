@@ -19,10 +19,7 @@ run the following command:
 npm install
 
 ## Step 3: Getting the credentials
-
-If you are using the zipped folder, the .env file with the required credentials should be there already. Skip this step!
-
-If you are cloning the git repository, Create a .env file on the root directory and copy the secret credentials in the secrets.txt file:
+The credentials have been provided in the readme file within the zipped folder and also attached in the email
 
 ## Step 4: Run the development server:
 
