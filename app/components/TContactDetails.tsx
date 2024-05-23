@@ -62,9 +62,9 @@ const TContactDetails = ({ contact, open, onClose }: TContactDetailsProps) => {
                 marginTop: "3px",
               }}
             >
-              <TravelExploreIcon />
+              <TravelExploreIcon className="text-black" />
               {/* <p style={{ marginLeft: "8px" }}>{contact.website}</p> */}
-              <Link href="#" underline="always" color={"#nnn"} className="ml-4">
+              <Link href="#" underline="hover" className="ml-4 text-black">
                 {contact.website}
               </Link>
             </div>
@@ -75,8 +75,8 @@ const TContactDetails = ({ contact, open, onClose }: TContactDetailsProps) => {
                 marginTop: "6px",
               }}
             >
-              <HouseIcon />
-              <Typography variant="body1" className="ml-4">
+              <HouseIcon className="text-black" />
+              <Typography variant="body1" className="ml-4 text-black">
                 {contact.address.suite}, {contact.address.street},{" "}
                 {contact.address.city}, {contact.address.zipcode}
               </Typography>
@@ -87,7 +87,9 @@ const TContactDetails = ({ contact, open, onClose }: TContactDetailsProps) => {
         </DialogContent>
       </div>
       <DialogActions className="bg-gradient-to-r from-gray-200 to-gray-500 bg-cover bg-center text-black">
-        <Button onClick={onClose}>Close</Button>
+        <Button onClick={onClose} className=" className= bg-black text-white">
+          Close
+        </Button>
       </DialogActions>
     </Dialog>
   );

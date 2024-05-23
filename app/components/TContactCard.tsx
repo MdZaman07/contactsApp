@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Button, CardActionArea, CardActions, Divider } from "@mui/material";
 import React from "react";
 import CardContentDetails from "./CardContentDetails";
 import TContactDetails from "./TContactDetails";
@@ -26,6 +26,7 @@ const TContactCard = ({ contact, currentUser }: TContactCardProps) => {
   const [open, setOpen] = useState(false);
   const [openDropzone, setOpenDropzone] = useState(false);
   console.log(contact.name + " is" + contact.image);
+  console.log("current user is = " + currentUser?.name);
 
   const handleFavorites = async () => {
     axios
@@ -79,21 +80,27 @@ const TContactCard = ({ contact, currentUser }: TContactCardProps) => {
           {currentUser && contact.image ? (
             <Image
               fill
-              alt={"name"}
+              alt={contact.name}
               src={contact.image}
               className="w-full h-full "
             />
           ) : (
-            <Image
-              fill
-              alt={"name"}
-              src={"/avatar1.jpg"}
-              className="w-full h-full object-contain"
-            />
+            // <Image
+            //   fill
+            //   alt={contact.name}
+            //   src={"/avatar1.jpg"}
+            //   className="w-full h-full object-contain"
+            // />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-3/4 h-3/4 bg-green-900 text-white font-bold text-4xl rounded-full flex items-center justify-center">
+                {contact.name.charAt(0).toUpperCase()}
+              </div>
+            </div>
           )}
         </div>
 
         <CardContent>
+          <Divider className="mb-2" />
           <CardContentDetails contact={contact} />
         </CardContent>
       </CardActionArea>

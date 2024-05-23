@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-  background: linear-gradient(135deg, #1b8af1, #b58ded);
+  background: url("/bg1.jpg");
+  /*linear-gradient(135deg, #1b8af1, #b58ded);
 
   /* transition: background 0.5s ease; */
 

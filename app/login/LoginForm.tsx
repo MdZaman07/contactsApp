@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import { SafeUser } from "@/types";
 
 const LoginForm = ({ currentUser }: { currentUser: SafeUser | null }) => {
+  console.log(currentUser);
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,

@@ -49,7 +49,7 @@ const RegisterForm = ({ currentUser }: { currentUser: SafeUser | null }) => {
           redirect: false,
         }).then((callback) => {
           if (callback?.ok) {
-            router.push("/contacts");
+            router.push("/");
             router.refresh();
             toast.success("Logged In");
           }

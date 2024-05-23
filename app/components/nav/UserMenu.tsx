@@ -26,7 +26,7 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
           className="
         p-2
         border-[1px]
-        border-slate-400
+        border-black
         flex
         flex-row
         items-center
@@ -38,7 +38,7 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
         text-slate-700"
         >
           <Avatar />
-          <AiFillCaretDown />
+          <AiFillCaretDown color="black" />
         </div>
         {isOpen && (
           <div
